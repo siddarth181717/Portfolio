@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Siddarth Soni - B.Tech CSE (AI/ML) Undergraduate & Full-Stack Creative Developer Portfolio">
+  <title>HI, I'M SIDDARTH | Full-Stack & AI/ML Developer</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800&family=Space+Grotesk:wght@500;700&family=Syne:wght@700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Three.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Page Loader -->
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-content">
+      <span class="loader-logo">SIDDARTH</span>
+      <div class="loader-bar"><div class="loader-progress"></div></div>
+    </div>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="site-header" id="top">
+    <nav class="nav-links">
+      <a href="#about" class="nav-item">ABOUT</a>
+      <a href="#certificates" class="nav-item">CERTIFICATES</a>
+      <a href="#projects" class="nav-item">PROJECTS</a>
+      <a href="#skills" class="nav-item">WHAT I KNOW</a>
+      <a href="#contact" class="nav-item">CONTACT</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="home">
+      <div class="hero-bg-glow" aria-hidden="true"></div>
+      
+      <div class="hero-title-wrap">
+        <h1 class="hero-title">HI, I'M SIDDARTH</h1>
+      </div>
+
+      <div class="hero-content-grid">
+        <div class="hero-left-desc">
+          <p>B.TECH CSE (AI/ML) UNDERGRADUATE & FULL-STACK CREATIVE DEVELOPER 🚀</p>
+        </div>
+
+        <div class="hero-avatar-wrapper" id="avatarWrapper">
+          <div class="avatar-glow"></div>
+          <div class="avatar-border-ring"></div>
+          <canvas id="heroAvatarCanvas"></canvas>
+          <img src="assets/ai_boy_avatar.png" alt="Siddarth Soni 3D Avatar" class="hero-avatar-img" id="heroAvatar" />
+        </div>
+
+        <div class="hero-right-cta">
+          <a href="#contact" class="contact-pill-btn magnetic"><span>CONTACT ME</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CUSTOMERS / HIGHLIGHTS LOGO MARQUEE -->
+    <section class="customers-section" id="customers">
+      <div class="logo-marquee">
+        <div class="logo-track">
+          <div class="logo-item"><svg class="client-icon" viewBox="0 0 24 24"><path d="M12 2 L22 12 L12 22 L2 12 Z" fill="currentColor"/></svg> GLA UNIVERSITY <span class="sub-logo">Mathura</span></div>
+          <div class="logo-item"><svg class="client-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" fill="currentColor"/><rect x="13" y="3" width="8" height="8" fill="currentColor"/><rect x="3" y="13" width="8" height="8" fill="currentColor"/><rect x="13" y="13" width="8" height="8" fill="currentColor"/></svg> MICROSOFT AZURE <span class="sub-logo">AZ-900 Certified</span></div>
+          <div class="logo-item"><svg class="client-icon" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><circle cx="6" cy="17" r="4"/><circle cx="18" cy="17" r="4"/></svg> FULL-STACK AI</div>
+          <div class="logo-item"><svg class="client-icon" viewBox="0 0 24 24"><path d="M4 4 L20 4 L20 20 L4 20 Z" stroke="currentColor" fill="none" stroke-width="2"/></svg> EDULEAP PLATFORM</div>
+          <div class="logo-item"><svg class="client-icon" viewBox="0 0 24 24"><path d="M12 2 L15 9 L22 12 L15 15 L12 22 L9 15 L2 12 L9 9 Z" fill="currentColor"/></svg> THREE.JS 3D</div>
+          <div class="logo-item"><svg class="client-icon" viewBox="0 0 24 24"><path d="M2 12 Q 6 4, 12 12 T 22 12" stroke="currentColor" fill="none" stroke-width="2.5"/></svg> PYTHON & MACHINE LEARNING</div>
+
+          <!-- Duplicated for Marquee Loop -->
+          <div class="logo-item"><svg class="client-icon" viewBox="0 0 24 24"><path d="M12 2 L22 12 L12 22 L2 12 Z" fill="currentColor"/></svg> GLA UNIVERSITY <span class="sub-logo">Mathura</span></div>
+          <div class="logo-item"><svg class="client-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" fill="currentColor"/><rect x="13" y="3" width="8" height="8" fill="currentColor"/><rect x="3" y="13" width="8" height="8" fill="currentColor"/><rect x="13" y="13" width="8" height="8" fill="currentColor"/></svg> MICROSOFT AZURE <span class="sub-logo">AZ-900 Certified</span></div>
+          <div class="logo-item"><svg class="client-icon" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><circle cx="6" cy="17" r="4"/><circle cx="18" cy="17" r="4"/></svg> FULL-STACK AI</div>
+          <div class="logo-item"><svg class="client-icon" viewBox="0 0 24 24"><path d="M4 4 L20 4 L20 20 L4 20 Z" stroke="currentColor" fill="none" stroke-width="2"/></svg> EDULEAP PLATFORM</div>
+          <div class="logo-item"><svg class="client-icon" viewBox="0 0 24 24"><path d="M12 2 L15 9 L22 12 L15 15 L12 22 L9 15 L2 12 L9 9 Z" fill="currentColor"/></svg> THREE.JS 3D</div>
+          <div class="logo-item"><svg class="client-icon" viewBox="0 0 24 24"><path d="M2 12 Q 6 4, 12 12 T 22 12" stroke="currentColor" fill="none" stroke-width="2.5"/></svg> PYTHON & MACHINE LEARNING</div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ABOUT SECTION WITH FLOATING 3D SHAPES -->
+    <section class="about-section" id="about">
+      <div class="floating-shapes-wrap">
+        <div class="floating-shape shape-star" data-parallax="0.08">
+          <div class="shape-inner silver-star">✦</div>
+        </div>
+        <div class="floating-shape shape-block" data-parallax="-0.06">
+          <div class="shape-inner blue-block">❖</div>
+        </div>
+        <div class="floating-shape shape-heart" data-parallax="0.1">
+          <div class="shape-inner red-heart">♥</div>
+        </div>
+        <div class="floating-shape shape-flower" data-parallax="-0.09">
+          <div class="shape-inner purple-flower">🌸</div>
+        </div>
+      </div>
+
+      <div class="about-container">
+        <h2 class="about-hero-title">ABOUT ME</h2>
+        
+        <div class="about-body">
+          <p>Computer Science and Engineering undergraduate specializing in Artificial Intelligence and Machine Learning at GLA University.</p>
+          <p>Passionate about building robust full-stack applications, intelligent systems, and immersive web experiences,</p>
+          <p>including cinematic portfolios featuring 3D scroll-based animations.</p>
+          <p class="highlight-text">Let's create something extraordinary together!</p>
+        </div>
+
+        <div class="about-cta-wrap">
+          <a href="#contact" class="contact-pill-btn magnetic">CONTACT ME</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATES SECTION -->
+    <section class="certificates-section" id="certificates">
+      <div class="certificates-container">
+        <div class="section-title-wrap">
+          <span class="section-badge">RECOGNITION</span>
+          <h2 class="section-main-heading">CERTIFICATES & ACHIEVEMENTS</h2>
+        </div>
+        
+        <div class="certificates-grid">
+          <!-- Cert 1: Microsoft Azure -->
+          <div class="cert-card">
+            <div class="cert-icon-wrap">☁️</div>
+            <div class="cert-details">
+              <span class="cert-issuer">MICROSOFT AZURE</span>
+              <h3>Microsoft Azure Fundamentals (AZ-900)</h3>
+              <p>Official certification covering core cloud concepts, Azure architecture, security infrastructure, compliance, governance, and cloud service management.</p>
+              <div class="cert-footer">
+                <span class="cert-date">AZ-900 Certified</span>
+                <a href="https://www.linkedin.com/posts/siddarth-soni-486785365_microsoft-azure-fundamentals-certified-activity-7462914946079670272-9UI4?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFq0kGYBpRqZsFw-mlDgJKm5bqnlBGMqENY" target="_blank" rel="noopener" class="cert-link-btn">
+                  <span>LINKEDIN</span>
+                  <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cert 2: Guinness World Record -->
+          <div class="cert-card">
+            <div class="cert-icon-wrap">🏆</div>
+            <div class="cert-details">
+              <span class="cert-issuer">GUINNESS WORLD RECORDS & TCS</span>
+              <h3>Guinness World Record — AI For All</h3>
+              <p>Global recognition and official participant in the Guinness World Record AI initiative powered by Tata Consultancy Services (TCS).</p>
+              <div class="cert-footer">
+                <span class="cert-date">World Record</span>
+                <a href="https://www.linkedin.com/posts/siddarth-soni-486785365_guinnessworldrecord-aiforall-tcs-activity-7451634318147321857-3Z0s?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFq0kGYBpRqZsFw-mlDgJKm5bqnlBGMqENY" target="_blank" rel="noopener" class="cert-link-btn">
+                  <span>LINKEDIN</span>
+                  <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cert 3: Hackathon -->
+          <div class="cert-card">
+            <div class="cert-icon-wrap">🚀</div>
+            <div class="cert-details">
+              <span class="cert-issuer">HACKATHON & INNOVATION</span>
+              <h3>Hackathon Innovation & Learning</h3>
+              <p>Recognition for rapid full-stack prototyping, engineering problem solving, and technological innovation in competitive hackathons.</p>
+              <div class="cert-footer">
+                <span class="cert-date">Hackathon Award</span>
+                <a href="https://www.linkedin.com/posts/siddarth-soni-486785365_hackathon-learning-innovation-activity-7450189723966537730-7FmP?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFq0kGYBpRqZsFw-mlDgJKm5bqnlBGMqENY" target="_blank" rel="noopener" class="cert-link-btn">
+                  <span>LINKEDIN</span>
+                  <svg class="link-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES / WHAT I DO SECTION -->
+    <section class="services-section" id="services">
+      <div class="services-container">
+        <div class="services-list">
+          <div class="service-row">
+            <span class="service-num">01</span>
+            <div class="service-info">
+              <h3>FULL-STACK WEB DEVELOPMENT</h3>
+              <p>Building modern, high-performance web applications using HTML, CSS, JavaScript, React, and scalable REST APIs.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <span class="service-num">02</span>
+            <div class="service-info">
+              <h3>AI & MACHINE LEARNING</h3>
+              <p>Developing intelligent machine learning models, data analytics pipelines, and AI systems leveraging Python, C, and Java.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <span class="service-num">03</span>
+            <div class="service-info">
+              <h3>DATABASE & BACKEND ARCHITECTURE</h3>
+              <p>Engineering robust database architectures using SQL and MongoDB alongside secure server-side REST APIs.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <span class="service-num">04</span>
+            <div class="service-info">
+              <h3>CLOUD INFRASTRUCTURE & AZURE</h3>
+              <p>Deploying cloud solutions, microservices, and backend infrastructures on Microsoft Azure (AZ-900 Certified).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED PROJECTS SECTION -->
+    <section class="case-studies-section" id="projects">
+      <div class="case-studies-container">
+        <div class="section-title-wrap text-center margin-bottom-lg">
+          <span class="section-badge">PORTFOLIO</span>
+          <h2 class="section-main-heading white-text">PROJECTS</h2>
+        </div>
+
+        <!-- Project 01: Eduleap -->
+        <article class="case-card">
+          <div class="case-card-header">
+            <div class="case-meta">
+              <span class="case-num">01</span>
+              <div class="case-client-info">
+                <span class="meta-label">FEATURED FULL-STACK PLATFORM</span>
+                <h4>Eduleap Platform</h4>
+              </div>
+            </div>
+            <a href="https://github.com/siddarth181717/Project--09" target="_blank" class="github-project-btn">
+              <svg class="github-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              VIEW ON GITHUB
+            </a>
+          </div>
+          <div class="case-card-body">
+            <p class="case-description">
+              An advanced educational management and learning platform designed to streamline academic workflows, enhance content accessibility, and deliver seamless interactions between students and instructors. Built with a scalable full-stack architecture prioritizing performance, real-time data accessibility, and intuitive UI layout.
+            </p>
+            <div class="case-tech-stack">
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">Node.js</span>
+              <span class="tech-tag">JavaScript / TypeScript</span>
+              <span class="tech-tag">REST APIs</span>
+              <span class="tech-tag">UI/UX Architecture</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 02: Sales Dashboard -->
+        <article class="case-card">
+          <div class="case-card-header">
+            <div class="case-meta">
+              <span class="case-num">02</span>
+              <div class="case-client-info">
+                <span class="meta-label">DATA ANALYTICS & DASHBOARD</span>
+                <h4>Sales Dashboard Platform</h4>
+              </div>
+            </div>
+            <a href="https://github.com/siddarth181717/Sales-Dashboard" target="_blank" class="github-project-btn">
+              <svg class="github-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              VIEW ON GITHUB
+            </a>
+          </div>
+          <div class="case-card-body">
+            <p class="case-description">
+              An interactive sales analytics dashboard application designed for real-time revenue visualization, sales KPI metrics tracking, performance filtering, and data-driven business intelligence.
+            </p>
+            <div class="case-tech-stack">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Data Analytics</span>
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">REST APIs</span>
+              <span class="tech-tag">Data Visualization</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 03: Machine Learning Engine -->
+        <article class="case-card">
+          <div class="case-card-header">
+            <div class="case-meta">
+              <span class="case-num">03</span>
+              <div class="case-client-info">
+                <span class="meta-label">ARTIFICIAL INTELLIGENCE MODEL</span>
+                <h4>AI Model 1 — ML Analytics & Pipeline</h4>
+              </div>
+            </div>
+            <a href="https://github.com/siddarth181717/Ai-model-1" target="_blank" class="github-project-btn">
+              <svg class="github-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              VIEW ON GITHUB
+            </a>
+          </div>
+
+          <div class="case-card-body">
+            <p class="case-description">
+              An end-to-end Machine Learning data processing engine built in Python. Features automated dataset pre-processing, feature engineering, neural network training, evaluation metrics, and cloud API deployment integration on Microsoft Azure.
+            </p>
+            <div class="case-tech-stack">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Machine Learning</span>
+              <span class="tech-tag">TensorFlow / PyTorch</span>
+              <span class="tech-tag">Microsoft Azure</span>
+              <span class="tech-tag">Data Infrastructure</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+
+    <!-- WHAT I KNOW (SKILLS & TOOLKIT) SECTION -->
+    <section class="skills-section" id="skills">
+      <div class="skills-container">
+        <div class="section-title-wrap text-center">
+          <span class="section-badge">EXPERTISE</span>
+          <h2 class="section-main-heading">WHAT I KNOW</h2>
+        </div>
+
+        <div class="skills-grid-container">
+          <!-- Card 1: Web Development -->
+          <div class="skill-card-white">
+            <div class="skill-card-header">
+              <span class="skill-box-icon">🌐</span>
+              <h3>WEB DEVELOPMENT</h3>
+            </div>
+            <ul class="skill-numbered-list">
+              <li><span class="list-num">1-</span> <span class="list-name">HTML</span></li>
+              <li><span class="list-num">2-</span> <span class="list-name">CSS</span></li>
+              <li><span class="list-num">3-</span> <span class="list-name">JavaScript</span></li>
+              <li><span class="list-num">4-</span> <span class="list-name">React</span></li>
+              <li><span class="list-num">5-</span> <span class="list-name">REST APIs</span></li>
+            </ul>
+          </div>
+
+          <!-- Card 2: Programming Language -->
+          <div class="skill-card-white">
+            <div class="skill-card-header">
+              <span class="skill-box-icon">💻</span>
+              <h3>PROGRAMMING LANGUAGE</h3>
+            </div>
+            <ul class="skill-numbered-list">
+              <li><span class="list-num">1-</span> <span class="list-name">C</span></li>
+              <li><span class="list-num">2-</span> <span class="list-name">Java</span></li>
+              <li><span class="list-num">3-</span> <span class="list-name">Python</span></li>
+            </ul>
+          </div>
+
+          <!-- Card 3: Database -->
+          <div class="skill-card-white">
+            <div class="skill-card-header">
+              <span class="skill-box-icon">🗄️</span>
+              <h3>DATABASE</h3>
+            </div>
+            <ul class="skill-numbered-list">
+              <li><span class="list-num">1-</span> <span class="list-name">SQL</span></li>
+              <li><span class="list-num">2-</span> <span class="list-name">MongoDB</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact-section" id="contact">
+      <div class="contact-card-wrapper">
+        <div class="floating-3d-icon lightning-bolt">⚡</div>
+        <div class="floating-3d-icon purple-torus">🍩</div>
+
+        <div class="contact-left-col">
+          <h2 class="contact-headline">LET'S GET<br>IN TOUCH</h2>
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sonisiddarth890@gmail.com" target="_blank" rel="noopener" class="contact-email" title="Open Gmail to compose email">
+            <svg class="email-icon" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            <span>sonisiddarth890@gmail.com</span>
+          </a>
+        </div>
+
+        <div class="contact-right-col">
+          <form class="contact-form" id="contactForm" action="https://formsubmit.co/sonisiddarth890@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="New Portfolio Message from Siddarth's Website!">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            
+            <div class="form-group">
+              <input type="text" id="fullName" name="Name" placeholder="Full Name*" required />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <input type="email" id="email" name="Email" placeholder="Email*" required />
+              </div>
+              <div class="form-group">
+                <input type="tel" id="phone" name="Phone" placeholder="Phone" />
+              </div>
+            </div>
+            <div class="form-group">
+              <textarea id="message" name="Message" rows="4" placeholder="Message*" required></textarea>
+            </div>
+            <button type="submit" class="send-btn" id="sendBtn">
+              <span class="btn-text">SEND</span>
+              <span class="btn-spinner" style="display:none;">SENDING... ⏳</span>
+            </button>
+            <div class="form-response-msg" id="formResponseMsg"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER SECTION -->
+  <footer class="site-footer">
+    <div class="footer-card-wrapper">
+      <div class="footer-top-row">
+        <div class="footer-brand">
+          <h2 class="footer-outlined-logo">SIDDARTH<br>SONI</h2>
+        </div>
+        <div class="footer-columns">
+          <div class="footer-col">
+            <h5>SOCIAL & LINKS</h5>
+            <ul>
+              <li><a href="https://www.linkedin.com/in/siddarth-soni-486785365/recent-activity/all/" target="_blank" rel="noopener">LinkedIn</a></li>
+              <li><a href="https://github.com/siddarth181717" target="_blank" rel="noopener">GitHub</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>CONTACT</h5>
+            <p><a href="https://mail.google.com/mail/?view=cm&fs=1&to=sonisiddarth890@gmail.com" target="_blank" rel="noopener" class="footer-email-link">sonisiddarth890@gmail.com</a></p>
+            <p class="address">GLA University, Mathura<br>Uttar Pradesh, India</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-shape-bar">
+        <span class="geom-shape shape-1" title="Cross Flower">❖</span>
+        <span class="geom-shape shape-2" title="Four Dots">⁛</span>
+        <span class="geom-shape shape-3" title="Hook Arch">◓</span>
+        <span class="geom-shape shape-4" title="Purple Circle">●</span>
+        <span class="geom-shape shape-5" title="Chevron Z">⬈</span>
+        <span class="geom-shape shape-6" title="Orange Arch">◐</span>
+        <span class="geom-shape shape-7" title="Orange Half Circle">◑</span>
+        <span class="geom-shape shape-8" title="Triangle Point">▲</span>
+        <span class="geom-shape shape-9" title="Pink Ring">◯</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX / LIVE PROJECT MODAL -->
+  <dialog class="project-modal" id="projectModal">
+    <button class="modal-close" id="modalClose" aria-label="Close dialog">&times;</button>
+    <div class="modal-body">
+      <img id="modalImg" src="" alt="Project view" />
+      <h3 id="modalTitle"></h3>
+      <p id="modalCategory"></p>
+    </div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
