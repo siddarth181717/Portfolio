@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Siddarth Soni - Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #0f172a;
+      --accent: #8b5cf6;
+      --accent-blue: #0284c7;
+      --text: #334155;
+      --text-dark: #0f172a;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+
+    .resume-container {
+      max-width: 850px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 50px 55px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border: 1px solid var(--border);
+    }
+
+    /* Header */
+    .resume-header {
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 24px;
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .header-left h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+    }
+
+    .header-left h2 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-top: 4px;
+    }
+
+    .contact-info {
+      list-style: none;
+      font-size: 0.88rem;
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      color: #475569;
+    }
+
+    .contact-info a {
+      color: var(--accent-blue);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    /* Action bar */
+    .action-bar {
+      max-width: 850px;
+      margin: 0 auto 20px auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .back-btn, .print-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .back-btn {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
+    .print-btn {
+      background: #8b5cf6;
+      color: #ffffff;
+      border: none;
+    }
+
+    .print-btn:hover {
+      background: #7c3aed;
+      transform: translateY(-1px);
+    }
+
+    /* Sections */
+    .section {
+      margin-bottom: 28px;
+    }
+
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-bottom: 1.5px solid var(--border);
+      padding-bottom: 6px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .summary-p {
+      font-size: 0.94rem;
+      color: #334155;
+    }
+
+    /* Experience / Projects Grid */
+    .item-block {
+      margin-bottom: 18px;
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 4px;
+    }
+
+    .item-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .item-subtitle {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .item-date {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #64748b;
+    }
+
+    .item-desc {
+      font-size: 0.9rem;
+      color: #475569;
+      margin-bottom: 6px;
+    }
+
+    .tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: #f1f5f9;
+      color: #475569;
+      padding: 3px 10px;
+      border-radius: 6px;
+      border: 1px solid #cbd5e1;
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .skill-cat {
+      font-size: 0.88rem;
+    }
+
+    .skill-cat strong {
+      color: var(--text-dark);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    @media print {
+      body { background: #fff; padding: 0; }
+      .resume-container { box-shadow: none; border: none; padding: 0; }
+      .action-bar { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="action-bar">
+    <a href="index.html" class="back-btn">← Back to Portfolio</a>
+    <button onclick="window.print()" class="print-btn">🖨️ Print / Download PDF</button>
+  </div>
+
+  <main class="resume-container">
+    <!-- HEADER -->
+    <header class="resume-header">
+      <div class="header-left">
+        <h1>Siddarth Soni</h1>
+        <h2>Software Developer & Full-Stack AI/ML Engineer</h2>
+      </div>
+      <ul class="contact-info">
+        <li>📧 <a href="mailto:sonisiddarth890@gmail.com">sonisiddarth890@gmail.com</a></li>
+        <li>📍 Mathura, Uttar Pradesh, India</li>
+        <li>🔗 <a href="https://github.com/siddarth181717" target="_blank">github.com/siddarth181717</a></li>
+        <li>💼 <a href="https://www.linkedin.com/in/siddarth-soni-486785365/" target="_blank">LinkedIn Profile</a></li>
+        <li>🐦 <a href="https://x.com/Siddarthsoni018" target="_blank">x.com/Siddarthsoni018</a></li>
+      </ul>
+    </header>
+
+    <!-- SUMMARY -->
+    <section class="section">
+      <h3 class="section-title">Professional Summary</h3>
+      <p class="summary-p">
+        Motivated B.Tech Computer Science & Engineering (AI/ML) Undergraduate and Full-Stack Developer with expertise in building modern web applications, RESTful APIs, Flask backends, machine learning pipelines, and Azure cloud solutions. Experienced in developing real-time FinTech POS software, interactive dashboards, and scalable full-stack web platforms.
+      </p>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="section">
+      <h3 class="section-title">Education</h3>
+      <div class="item-block">
+        <div class="item-header">
+          <span class="item-title">GLA University</span>
+          <span class="item-date">Mathura, UP, India</span>
+        </div>
+        <div class="item-subtitle">Bachelor of Technology (B.Tech) - Computer Science & Engineering (AI/ML)</div>
+      </div>
+    </section>
+
+    <!-- TECHNICAL SKILLS -->
+    <section class="section">
+      <h3 class="section-title">Technical Skills</h3>
+      <div class="skills-grid">
+        <div class="skill-cat">
+          <strong>Languages & Web:</strong>
+          C, Java, Python, HTML5, CSS3, JavaScript (ES6+), React.js
+        </div>
+        <div class="skill-cat">
+          <strong>Backend & Cloud:</strong>
+          Node.js, REST APIs, Flask, Microsoft Azure (AZ-900)
+        </div>
+        <div class="skill-cat">
+          <strong>Databases:</strong>
+          SQL, MongoDB
+        </div>
+        <div class="skill-cat">
+          <strong>AI/ML & Tools:</strong>
+          Machine Learning Pipelines, TensorFlow/PyTorch, Git, GitHub, Postman, Three.js 3D
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED PROJECTS -->
+    <section class="section">
+      <h3 class="section-title">Featured Projects</h3>
+      
+      <div class="item-block">
+        <div class="item-header">
+          <span class="item-title">HarshBill — Smart Mobile POS & Billing Solution</span>
+          <span class="item-subtitle">FinTech & Mobile App</span>
+        </div>
+        <p class="item-desc">
+          Lightweight Point of Sale (POS) mobile billing app for retail vendors. Features instant digital receipt generation, item catalog & price management, discount calculations, and portable thermal printer integration.
+        </p>
+        <div class="tags-row">
+          <span class="tag">JavaScript</span>
+          <span class="tag">FinTech POS</span>
+          <span class="tag">Thermal Printer Integration</span>
+          <span class="tag">UI/UX</span>
+        </div>
+      </div>
+
+      <div class="item-block">
+        <div class="item-header">
+          <span class="item-title">Eduleap Platform</span>
+          <span class="item-subtitle">Full-Stack Educational Platform</span>
+        </div>
+        <p class="item-desc">
+          Full-stack academic management platform designed to streamline course content accessibility, academic workflows, and real-time interaction between students and instructors.
+        </p>
+        <div class="tags-row">
+          <span class="tag">React</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">REST APIs</span>
+          <span class="tag">JavaScript</span>
+        </div>
+      </div>
+
+      <div class="item-block">
+        <div class="item-header">
+          <span class="item-title">AI Model 1 — ML Analytics & Pipeline</span>
+          <span class="item-subtitle">Machine Learning Infrastructure</span>
+        </div>
+        <p class="item-desc">
+          End-to-end Machine Learning data processing pipeline in Python. Features automated dataset pre-processing, feature engineering, neural network training, and cloud API integration on Microsoft Azure.
+        </p>
+        <div class="tags-row">
+          <span class="tag">Python</span>
+          <span class="tag">Machine Learning</span>
+          <span class="tag">TensorFlow/PyTorch</span>
+          <span class="tag">Microsoft Azure</span>
+        </div>
+      </div>
+
+      <div class="item-block">
+        <div class="item-header">
+          <span class="item-title">Sales Dashboard Platform</span>
+          <span class="item-subtitle">Data Analytics</span>
+        </div>
+        <p class="item-desc">
+          Interactive sales analytics dashboard application for real-time revenue visualization, sales KPI metrics tracking, performance filtering, and business intelligence.
+        </p>
+        <div class="tags-row">
+          <span class="tag">Python</span>
+          <span class="tag">Data Analytics</span>
+          <span class="tag">React</span>
+          <span class="tag">REST APIs</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS & ACHIEVEMENTS -->
+    <section class="section">
+      <h3 class="section-title">Certifications & Achievements</h3>
+      <div class="item-block">
+        <div class="item-header">
+          <span class="item-title">Microsoft Certified: Azure Fundamentals (AZ-900)</span>
+          <span class="item-date">Microsoft</span>
+        </div>
+        <p class="item-desc">Official certification covering cloud concepts, Azure architecture, security infrastructure, and cloud service management.</p>
+      </div>
+
+      <div class="item-block">
+        <div class="item-header">
+          <span class="item-title">Guinness World Record Participant — AI & Cybersecurity Awareness</span>
+          <span class="item-date">TCS iON & MPIT</span>
+        </div>
+        <p class="item-desc">Official Certificate of Completion under the "AI for All" initiative in partnership with TCS Foundation & MPIT — CoE.</p>
+      </div>
+
+      <div class="item-block">
+        <div class="item-header">
+          <span class="item-title">Hackathon Innovation & Prototyping Award</span>
+          <span class="item-date">Competitive Engineering</span>
+        </div>
+        <p class="item-desc">Recognition for rapid full-stack prototyping, engineering problem-solving, and technological innovation in hackathons.</p>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>

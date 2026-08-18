@@ -154,6 +154,21 @@ body {
   width: 100%;
 }
 
+.nav-resume-btn {
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: rgba(139, 92, 246, 0.15);
+  border: 1px solid rgba(139, 92, 246, 0.4);
+  color: #d8b4fe !important;
+}
+
+.nav-resume-btn:hover {
+  background: #8b5cf6;
+  color: #ffffff !important;
+  border-color: #8b5cf6;
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+}
+
 /* HERO SECTION */
 .hero-section {
   position: relative;
