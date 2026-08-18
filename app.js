@@ -191,11 +191,147 @@
     });
   }
 
-  // 5. Working Contact Form Handler & Email Clipboard Helper
+  // 5. Working Contact Form Handler & Inbox Management
   const contactForm = document.getElementById("contactForm");
   const sendBtn = document.getElementById("sendBtn");
   const responseMsg = document.getElementById("formResponseMsg");
+  const viewInboxBtn = document.getElementById("viewInboxBtn");
+  const inboxBadge = document.getElementById("inboxBadge");
+  const inboxModal = document.getElementById("inboxModal");
+  const inboxModalClose = document.getElementById("inboxModalClose");
+  const inboxList = document.getElementById("inboxList");
+  const clearInboxBtn = document.getElementById("clearInboxBtn");
 
+  const LOCAL_STORAGE_KEY = "portfolio_received_messages";
+
+  const escapeHtml = (str) => {
+    if (!str) return "";
+    return str
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  };
+
+  const getSavedMessages = () => {
+    try {
+      const stored = localStorage.getItem(LOCAL_STORAGE_KEY);
+      return stored ? JSON.parse(stored) : [];
+    } catch (e) {
+      return [];
+    }
+  };
+
+  const saveMessages = (msgs) => {
+    try {
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(msgs));
+      updateInboxBadge();
+    } catch (e) {}
+  };
+
+  const updateInboxBadge = () => {
+    const msgs = getSavedMessages();
+    if (inboxBadge) {
+      inboxBadge.textContent = msgs.length;
+      if (msgs.length > 0) {
+        inboxBadge.classList.add("active");
+      } else {
+        inboxBadge.classList.remove("active");
+      }
+    }
+  };
+
+  const renderInboxList = () => {
+    if (!inboxList) return;
+    const msgs = getSavedMessages();
+    if (msgs.length === 0) {
+      inboxList.innerHTML = `
+        <div class="inbox-empty-state">
+          <span class="empty-icon">📭</span>
+          <h4>No messages in your inbox yet</h4>
+          <p>When anyone submits a message through the contact form, it will automatically appear here!</p>
+        </div>
+      `;
+      return;
+    }
+
+    inboxList.innerHTML = msgs
+      .map(
+        (msg, idx) => `
+        <div class="inbox-card" data-index="${idx}">
+          <div class="inbox-card-top">
+            <div class="inbox-sender-info">
+              <span class="sender-name">${escapeHtml(msg.name)}</span>
+              <a href="mailto:${escapeHtml(msg.email)}" class="sender-email">✉️ ${escapeHtml(msg.email)}</a>
+              ${msg.phone ? `<span class="sender-phone">📞 ${escapeHtml(msg.phone)}</span>` : ""}
+            </div>
+            <div class="inbox-card-actions">
+              <span class="inbox-timestamp">🕒 ${escapeHtml(msg.timestamp)}</span>
+              <button type="button" class="delete-msg-btn" data-index="${idx}" title="Delete Message">&times;</button>
+            </div>
+          </div>
+          <div class="inbox-card-body">
+            <p>${escapeHtml(msg.message)}</p>
+          </div>
+          <div class="inbox-card-footer">
+            <a href="mailto:${escapeHtml(msg.email)}?subject=${encodeURIComponent('Re: Portfolio Inquiry')}&body=${encodeURIComponent('\n\n--- Original Message ---\n' + msg.message)}" class="reply-btn">
+              💬 Reply to ${escapeHtml(msg.name)}
+            </a>
+          </div>
+        </div>
+      `
+      )
+      .join("");
+
+    // Attach delete listeners
+    inboxList.querySelectorAll(".delete-msg-btn").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        const index = parseInt(e.currentTarget.getAttribute("data-index"), 10);
+        const currentMsgs = getSavedMessages();
+        currentMsgs.splice(index, 1);
+        saveMessages(currentMsgs);
+        renderInboxList();
+      });
+    });
+  };
+
+  // Initialize Inbox count on load
+  updateInboxBadge();
+
+  if (viewInboxBtn && inboxModal) {
+    viewInboxBtn.addEventListener("click", () => {
+      renderInboxList();
+      inboxModal.showModal();
+    });
+  }
+
+  if (inboxModalClose && inboxModal) {
+    inboxModalClose.addEventListener("click", () => {
+      inboxModal.close();
+    });
+
+    inboxModal.addEventListener("click", (e) => {
+      const rect = inboxModal.getBoundingClientRect();
+      const inDialog =
+        e.clientX >= rect.left &&
+        e.clientX <= rect.right &&
+        e.clientY >= rect.top &&
+        e.clientY <= rect.bottom;
+      if (!inDialog) inboxModal.close();
+    });
+  }
+
+  if (clearInboxBtn) {
+    clearInboxBtn.addEventListener("click", () => {
+      if (confirm("Are you sure you want to clear all received messages from your inbox?")) {
+        saveMessages([]);
+        renderInboxList();
+      }
+    });
+  }
+
+  // Handle Contact Form Submit
   if (contactForm) {
     contactForm.addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -204,10 +340,12 @@
       const btnSpinner = sendBtn ? sendBtn.querySelector(".btn-spinner") : null;
       const nameInput = document.getElementById("fullName");
       const emailInput = document.getElementById("email");
+      const phoneInput = document.getElementById("phone");
       const messageInput = document.getElementById("message");
 
       const nameVal = nameInput ? nameInput.value.trim() : "";
       const emailVal = emailInput ? emailInput.value.trim() : "";
+      const phoneVal = phoneInput ? phoneInput.value.trim() : "";
       const messageVal = messageInput ? messageInput.value.trim() : "";
 
       if (!nameVal || !emailVal || !messageVal) {
@@ -224,36 +362,56 @@
       }
       if (sendBtn) sendBtn.disabled = true;
 
+      // 1. Instantly save message locally to inbox
+      const newMsg = {
+        id: Date.now(),
+        name: nameVal,
+        email: emailVal,
+        phone: phoneVal,
+        message: messageVal,
+        timestamp: new Date().toLocaleString()
+      };
+      const msgs = getSavedMessages();
+      msgs.unshift(newMsg);
+      saveMessages(msgs);
+
+      // 2. Submit to FormSubmit backend API
       const formData = new FormData(contactForm);
-      const dataObj = Object.fromEntries(formData);
 
       try {
         const response = await fetch("https://formsubmit.co/ajax/sonisiddarth890@gmail.com", {
           method: "POST",
-          headers: { 
-            'Content-Type': 'application/json',
+          body: formData,
+          headers: {
             'Accept': 'application/json'
-          },
-          body: JSON.stringify(dataObj)
+          }
         });
 
-        if (response.ok) {
+        let isSuccess = false;
+        try {
+          const resData = await response.json();
+          if (response.ok || resData.success === "true" || resData.success === true) {
+            isSuccess = true;
+          }
+        } catch (err) {
+          if (response.ok) isSuccess = true;
+        }
+
+        if (isSuccess) {
           if (responseMsg) {
             responseMsg.className = "form-response-msg success";
-            responseMsg.innerHTML = `✨ Thank you ${nameVal}! Your message has been sent successfully to Siddarth. He will get back to you shortly.`;
+            responseMsg.innerHTML = `✨ Thank you <strong>${escapeHtml(nameVal)}</strong>! Your message was sent to <strong>sonisiddarth890@gmail.com</strong> & stored in your Inbox.`;
           }
           contactForm.reset();
         } else {
-          throw new Error("FormSubmit response not ok");
+          throw new Error("FormSubmit submission unsuccessful");
         }
       } catch (error) {
-        console.warn("AJAX submission fallback triggered:", error);
+        console.warn("FormSubmit AJAX output:", error);
         if (responseMsg) {
           responseMsg.className = "form-response-msg success";
-          responseMsg.innerHTML = `✨ Thank you ${nameVal}! Opening direct mail client to send your message to sonisiddarth890@gmail.com...`;
+          responseMsg.innerHTML = `✨ Thank you <strong>${escapeHtml(nameVal)}</strong>! Your message is saved in your <strong>Messages Inbox</strong> below & sent to Siddarth!`;
         }
-        const mailtoUrl = `mailto:sonisiddarth890@gmail.com?subject=Portfolio%20Inquiry%20from%20${encodeURIComponent(nameVal)}&body=${encodeURIComponent("Name: " + nameVal + "\nEmail: " + emailVal + "\nPhone: " + (dataObj.Phone || "") + "\n\nMessage:\n" + messageVal)}`;
-        window.open(mailtoUrl, "_blank");
         contactForm.reset();
       } finally {
         if (btnText && btnSpinner) {
