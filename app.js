@@ -387,32 +387,34 @@
           }
         });
 
-        let isSuccess = false;
-        try {
-          const resData = await response.json();
-          if (response.ok || resData.success === "true" || resData.success === true) {
-            isSuccess = true;
-          }
-        } catch (err) {
-          if (response.ok) isSuccess = true;
-        }
+        const resData = await response.json().catch(() => null);
 
-        if (isSuccess) {
+        if (response.ok && resData && (resData.success === "true" || resData.success === true)) {
           if (responseMsg) {
             responseMsg.className = "form-response-msg success";
-            responseMsg.innerHTML = `✨ Thank you <strong>${escapeHtml(nameVal)}</strong>! Your message was sent & saved in your Messages Inbox.<br><small style="margin-top:6px; display:inline-block; opacity:0.9;">💡 <em>First-time note: Check <strong>sonisiddarth890@gmail.com</strong> (and Spam) to click "Activate Form" if FormSubmit requests confirmation.</em></small>`;
+            responseMsg.innerHTML = `✨ Thank you <strong>${escapeHtml(nameVal)}</strong>! Your message was sent to <strong>sonisiddarth890@gmail.com</strong> & saved in your Messages Inbox.`;
           }
           contactForm.reset();
         } else {
-          throw new Error("FormSubmit submission unsuccessful");
+          // If AJAX is not activated or rejected, fall back to native FormSubmit POST navigation
+          console.warn("FormSubmit AJAX needs native activation/submission:", resData || response.status);
+          if (responseMsg) {
+            responseMsg.className = "form-response-msg error";
+            responseMsg.innerHTML = "🔄 Redirecting to FormSubmit to send email and complete confirmation...";
+          }
+          // Perform native HTML form submit to FormSubmit.co
+          HTMLFormElement.prototype.submit.call(contactForm);
+          return;
         }
       } catch (error) {
-        console.warn("FormSubmit AJAX output:", error);
+        console.warn("FormSubmit AJAX fetch error, triggering native form submit:", error);
         if (responseMsg) {
-          responseMsg.className = "form-response-msg success";
-          responseMsg.innerHTML = `✨ Thank you <strong>${escapeHtml(nameVal)}</strong>! Your message is saved in your <strong>Messages Inbox</strong> below & prepared for Siddarth!`;
+          responseMsg.className = "form-response-msg error";
+          responseMsg.innerHTML = "🔄 Submitting to FormSubmit server for email delivery...";
         }
-        contactForm.reset();
+        // Native submit fallback
+        HTMLFormElement.prototype.submit.call(contactForm);
+        return;
       } finally {
         if (btnText && btnSpinner) {
           btnText.style.display = "inline-block";
