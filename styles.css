@@ -798,6 +798,13 @@ body {
   fill: currentColor;
 }
 
+.linkedin-project-btn:hover {
+  background: #0a66c2;
+  color: #ffffff;
+  border-color: #0a66c2;
+  box-shadow: 0 10px 25px rgba(10, 102, 194, 0.4);
+}
+
 .case-card-body {
   margin-top: 20px;
   padding-top: 20px;
