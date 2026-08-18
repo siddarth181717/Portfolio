@@ -400,7 +400,7 @@
         if (isSuccess) {
           if (responseMsg) {
             responseMsg.className = "form-response-msg success";
-            responseMsg.innerHTML = `✨ Thank you <strong>${escapeHtml(nameVal)}</strong>! Your message was sent to <strong>sonisiddarth890@gmail.com</strong> & stored in your Inbox.`;
+            responseMsg.innerHTML = `✨ Thank you <strong>${escapeHtml(nameVal)}</strong>! Your message was sent & saved in your Messages Inbox.<br><small style="margin-top:6px; display:inline-block; opacity:0.9;">💡 <em>First-time note: Check <strong>sonisiddarth890@gmail.com</strong> (and Spam) to click "Activate Form" if FormSubmit requests confirmation.</em></small>`;
           }
           contactForm.reset();
         } else {
@@ -410,7 +410,7 @@
         console.warn("FormSubmit AJAX output:", error);
         if (responseMsg) {
           responseMsg.className = "form-response-msg success";
-          responseMsg.innerHTML = `✨ Thank you <strong>${escapeHtml(nameVal)}</strong>! Your message is saved in your <strong>Messages Inbox</strong> below & sent to Siddarth!`;
+          responseMsg.innerHTML = `✨ Thank you <strong>${escapeHtml(nameVal)}</strong>! Your message is saved in your <strong>Messages Inbox</strong> below & prepared for Siddarth!`;
         }
         contactForm.reset();
       } finally {
