@@ -191,7 +191,7 @@
     });
   }
 
-  // 5. Working Contact Form Handler with FormSubmit AJAX
+  // 5. Working Contact Form Handler & Email Clipboard Helper
   const contactForm = document.getElementById("contactForm");
   const sendBtn = document.getElementById("sendBtn");
   const responseMsg = document.getElementById("formResponseMsg");
@@ -202,6 +202,21 @@
 
       const btnText = sendBtn ? sendBtn.querySelector(".btn-text") : null;
       const btnSpinner = sendBtn ? sendBtn.querySelector(".btn-spinner") : null;
+      const nameInput = document.getElementById("fullName");
+      const emailInput = document.getElementById("email");
+      const messageInput = document.getElementById("message");
+
+      const nameVal = nameInput ? nameInput.value.trim() : "";
+      const emailVal = emailInput ? emailInput.value.trim() : "";
+      const messageVal = messageInput ? messageInput.value.trim() : "";
+
+      if (!nameVal || !emailVal || !messageVal) {
+        if (responseMsg) {
+          responseMsg.className = "form-response-msg error";
+          responseMsg.innerHTML = "⚠️ Please fill in all required fields (Name, Email, Message).";
+        }
+        return;
+      }
 
       if (btnText && btnSpinner) {
         btnText.style.display = "none";
@@ -210,6 +225,7 @@
       if (sendBtn) sendBtn.disabled = true;
 
       const formData = new FormData(contactForm);
+      const dataObj = Object.fromEntries(formData);
 
       try {
         const response = await fetch("https://formsubmit.co/ajax/sonisiddarth890@gmail.com", {
@@ -218,25 +234,27 @@
             'Content-Type': 'application/json',
             'Accept': 'application/json'
           },
-          body: JSON.stringify(Object.fromEntries(formData))
+          body: JSON.stringify(dataObj)
         });
 
         if (response.ok) {
           if (responseMsg) {
             responseMsg.className = "form-response-msg success";
-            responseMsg.innerHTML = "✨ Thank you! Your message has been sent directly to Siddarth's email.";
+            responseMsg.innerHTML = `✨ Thank you ${nameVal}! Your message has been sent successfully to Siddarth. He will get back to you shortly.`;
           }
           contactForm.reset();
         } else {
-          throw new Error("Form submission failed");
+          throw new Error("FormSubmit response not ok");
         }
       } catch (error) {
-        console.error("Form submission error:", error);
+        console.warn("AJAX submission fallback triggered:", error);
         if (responseMsg) {
           responseMsg.className = "form-response-msg success";
-          responseMsg.innerHTML = "✨ Thank you! Sending message to Siddarth...";
+          responseMsg.innerHTML = `✨ Thank you ${nameVal}! Opening direct mail client to send your message to sonisiddarth890@gmail.com...`;
         }
-        contactForm.submit();
+        const mailtoUrl = `mailto:sonisiddarth890@gmail.com?subject=Portfolio%20Inquiry%20from%20${encodeURIComponent(nameVal)}&body=${encodeURIComponent("Name: " + nameVal + "\nEmail: " + emailVal + "\nPhone: " + (dataObj.Phone || "") + "\n\nMessage:\n" + messageVal)}`;
+        window.open(mailtoUrl, "_blank");
+        contactForm.reset();
       } finally {
         if (btnText && btnSpinner) {
           btnText.style.display = "inline-block";
@@ -246,6 +264,27 @@
       }
     });
   }
+
+  // Interactive Email Clipboard Copy Helper for Email Links
+  const emailLinks = document.querySelectorAll(".contact-email, .footer-email-link");
+  emailLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      const email = "sonisiddarth890@gmail.com";
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(email).then(() => {
+          if (responseMsg) {
+            responseMsg.className = "form-response-msg success";
+            responseMsg.innerHTML = "📋 Email address sonisiddarth890@gmail.com copied to clipboard!";
+            setTimeout(() => {
+              if (responseMsg.classList.contains("success") && responseMsg.innerHTML.includes("copied")) {
+                responseMsg.className = "form-response-msg";
+              }
+            }, 4000);
+          }
+        }).catch(() => {});
+      }
+    });
+  });
 
   // 6. Project Modal Lightbox
   const modal = document.getElementById("projectModal");
