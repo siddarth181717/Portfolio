@@ -14,8 +14,8 @@
   <!-- Three.js CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-  <script type="module" crossorigin src="/assets/index-k7fK0h24.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-iY6iyCuB.css">
+  <script type="module" crossorigin src="/assets/index-D7XpiiTc.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DlPCFH7j.css">
 </head>
 <body>
 
@@ -364,10 +364,16 @@
             <div class="form-group">
               <textarea id="message" name="Message" rows="4" placeholder="Message*" required></textarea>
             </div>
-            <button type="submit" class="send-btn" id="sendBtn">
-              <span class="btn-text">SEND</span>
-              <span class="btn-spinner hidden">SENDING... ⏳</span>
-            </button>
+            <div class="form-btn-row">
+              <button type="submit" class="send-btn" id="sendBtn">
+                <span class="btn-text">SEND 🚀</span>
+                <span class="btn-spinner hidden">SENDING... ⏳</span>
+              </button>
+              <button type="button" class="inbox-btn" id="viewInboxBtn" title="View messages received in your inbox">
+                <span>📥 Messages Inbox</span>
+                <span class="inbox-badge" id="inboxBadge">0</span>
+              </button>
+            </div>
             <div class="form-response-msg" id="formResponseMsg"></div>
           </form>
         </div>
@@ -419,6 +425,24 @@
       <img id="modalImg" src="" alt="Project view" />
       <h3 id="modalTitle"></h3>
       <p id="modalCategory"></p>
+    </div>
+  </dialog>
+
+  <!-- RECEIVED MESSAGES INBOX MODAL -->
+  <dialog class="inbox-modal" id="inboxModal">
+    <div class="inbox-modal-header">
+      <div class="inbox-title-wrap">
+        <h3>📥 Received Messages Inbox</h3>
+        <span class="inbox-subtitle">All messages submitted via your portfolio form</span>
+      </div>
+      <button class="modal-close" id="inboxModalClose" aria-label="Close inbox">&times;</button>
+    </div>
+    <div class="inbox-modal-body" id="inboxList">
+      <!-- Dynamically populated -->
+    </div>
+    <div class="inbox-modal-footer">
+      <span class="inbox-tip">💡 Messages are also automatically emailed to <strong>sonisiddarth890@gmail.com</strong></span>
+      <button type="button" class="clear-inbox-btn" id="clearInboxBtn">🗑️ Clear Inbox</button>
     </div>
   </dialog>
 
